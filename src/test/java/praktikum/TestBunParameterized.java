@@ -40,12 +40,10 @@ public class TestBunParameterized {
     @Test
     public void constructorShouldSetName() {
         assertEquals(name, bun.getName());
-        assertEquals(price, bun.getPrice(), 0.001f);
     }
 
     @Test
     public void constructorShouldSetPrice() {
-        assertEquals(name, bun.getName());
         assertEquals(price, bun.getPrice(), 0.001f);
     }
 
