@@ -122,6 +122,46 @@ public class TestBurger {
         assertTrue(burger.ingredients.isEmpty());
     }
 
+    // ==================== moveIngredient ====================
+    @Test
+    public void moveIngredientShouldMoveFirstToEnd() {
+        burger.setBuns(bunMock);
+        burger.addIngredient(sauceA);
+        burger.addIngredient(sauceB);
+        burger.addIngredient(filling);
+
+        burger.moveIngredient(0, 2);
+        assertSame(sauceB, burger.ingredients.get(0));
+        assertSame(filling, burger.ingredients.get(1));
+        assertSame(sauceA, burger.ingredients.get(2));
+    }
+
+    @Test
+    public void moveIngredientShouldMoveLastToFront() {
+        burger.setBuns(bunMock);
+        burger.addIngredient(sauceA);
+        burger.addIngredient(sauceB);
+        burger.addIngredient(filling);
+
+        burger.moveIngredient(2, 0);
+        assertSame(filling, burger.ingredients.get(0));
+        assertSame(sauceA, burger.ingredients.get(1));
+        assertSame(sauceB, burger.ingredients.get(2));
+    }
+
+    @Test
+    public void moveIngredientShouldDoNothingWhenSameIndex() {
+        burger.setBuns(bunMock);
+        burger.addIngredient(sauceA);
+        burger.addIngredient(sauceB);
+        burger.addIngredient(filling);
+
+        burger.moveIngredient(1, 1); // middle to middle
+        assertSame(sauceA, burger.ingredients.get(0));
+        assertSame(sauceB, burger.ingredients.get(1));
+        assertSame(filling, burger.ingredients.get(2));
+    }
+
     // ==================== getPrice ====================
     @Test
     public void getPriceShouldReturnDoubleBunPriceWhenNoIngredients() {
